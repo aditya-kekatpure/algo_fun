@@ -22,7 +22,6 @@ void Graph::addEdge(int v, int w)
 
 void Graph::bfs(int sourceVertex)
 {
-	 mark all vertices as not visited
 	bool *visited = new bool[V];
 
 	for (int i = 0; i < V; ++i)
