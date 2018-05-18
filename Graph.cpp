@@ -32,11 +32,11 @@ void Graph::bfs(int sourceVertex)
 
 	std::queue<int> bfsV;
 
-	 mark the current node as visited, so enqueue it
+	// mark the current node as visited, so enqueue it
 	visited[sourceVertex] = true;
 	bfsV.push(sourceVertex);
 
-	 iter will be used to get all the adjacent vertices of a vertex, which is effectively a list
+	// iter will be used to get all the adjacent vertices of a vertex, which is effectively a list
 	std::list<int>::iterator iter;
 
 	while (!bfsV.empty())
@@ -60,7 +60,7 @@ void Graph::bfs(int sourceVertex)
 
 void Graph::dfs(int sourceVertex)
 {
-	 mark all vertices as not visited
+	// mark all vertices as not visited
 	bool *visited = new bool[V];
 
 	for (int i = 0; i < V; ++i)
@@ -73,11 +73,11 @@ void Graph::dfs(int sourceVertex)
 
 void Graph::dfs(int v, bool* visited)
 {
-	 mark the current node as visited and print it
+	// mark the current node as visited and print it
 	visited[v] = true;
 	std::cout << v << std::endl;
 
-	 call this recursively for all vertices
+	// call this recursively for all vertices
 	std::list<int>::iterator iter;
 	for (iter = adjacencyList[v].begin(); iter != adjacencyList[v].end(); ++iter)
 	{
@@ -94,23 +94,22 @@ void Graph::dfsI(int sourceVertex)
 
 	std::stack<int> dfsV;
 
-	 push the current node
+	// push the current node
 	dfsV.push(sourceVertex);
 
 	while (!dfsV.empty())
 	{
-		 pop the vertex from the stack and print it
 		sourceVertex = dfsV.top();
 		dfsV.pop();
 
-		 stack may contain same vertex twice, so print the popped item only if it was not visited
+		// stack may contain same vertex twice, so print the popped item only if it was not visited
 		if (!visited[sourceVertex])
 		{
 			std::cout << sourceVertex << std::endl;
 			visited[sourceVertex] = true;
 		}
 
-		 Now get all the adjacent vertices of the popped vertex 'sourceVertex' & if not visited, push it on the stack
+		// Now get all the adjacent vertices of the popped vertex 'sourceVertex' & if not visited, push it on the stack
 		for (auto iter = adjacencyList[sourceVertex].begin(); iter != adjacencyList[sourceVertex].end(); ++iter)
 		{
 			if (!visited[*iter])
